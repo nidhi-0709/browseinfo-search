@@ -15,7 +15,7 @@ body{
 
 .container{
     width:90%;
-    max-width:1200px;
+    max-width:1400px;
     margin:40px auto;
 }
 
@@ -75,40 +75,72 @@ button:hover{
     background:#1d4ed8;
 }
 
-h2{
-    margin-top:45px;
-    margin-bottom:25px;
+.result-title{
+    text-align:center;
+    margin:45px 0 25px;
     color:#1e3a8a;
 }
 
-.cards{
-    display:grid;
-    grid-template-columns:repeat(auto-fit,minmax(340px,1fr));
-    gap:25px;
+/* ==========================
+   Two Column Layout
+========================== */
+
+.results-container{
+    display:flex;
+    gap:30px;
+    align-items:flex-start;
 }
+
+.column{
+    flex:1;
+}
+
+.column-title{
+    text-align:center;
+    color:white;
+    padding:15px;
+    border-radius:10px;
+    margin-bottom:20px;
+    font-size:24px;
+}
+
+.browseinfo-title{
+    background:#16a34a;
+}
+
+.odoo-title{
+    background:#714B67;
+}
+
+/* ==========================
+   Cards
+========================== */
 
 .card{
     background:white;
     border-radius:15px;
     padding:25px;
+    margin-bottom:25px;
     box-shadow:0 8px 20px rgba(0,0,0,.08);
     transition:.3s;
 }
 
 .card:hover{
-    transform:translateY(-6px);
+    transform:translateY(-5px);
 }
 
 .top{
     display:flex;
     justify-content:space-between;
-    align-items:center;
+    align-items:flex-start;
+    gap:15px;
     margin-bottom:20px;
 }
 
 .top h3{
     color:#1e293b;
-    font-size:22px;
+    font-size:20px;
+    line-height:1.4;
 }
 
 .score{
@@ -116,7 +148,8 @@ h2{
     color:white;
     padding:8px 14px;
     border-radius:20px;
-    font-weight:bold;
+    font-weight:600;
+    white-space:nowrap;
 }
 
 .badge{
@@ -151,6 +184,22 @@ h2{
     text-decoration:underline;
 }
 
+/* ==========================
+   Responsive
+========================== */
+
+@media(max-width:900px){
+
+    .results-container{
+        flex-direction:column;
+    }
+
+    .column{
+        width:100%;
+    }
+
+}
+
 @media(max-width:768px){
 
     h1{
@@ -165,8 +214,13 @@ h2{
         width:95%;
     }
 
-    .cards{
-        grid-template-columns:1fr;
+    .top{
+        flex-direction:column;
+        align-items:flex-start;
+    }
+
+    .score{
+        margin-top:10px;
     }
 
 }

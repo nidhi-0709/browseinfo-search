@@ -6,8 +6,8 @@
 
     <title>Odoo AI Module Recommender</title>
 
-   <link rel="stylesheet"
-      href="{{ url_for('static', filename='css/style.css') }}">
+    <link rel="stylesheet"
+          href="{{ url_for('static', filename='css/style.css') }}">
 
 </head>
 
@@ -15,7 +15,7 @@
 
 <div class="container">
 
-    <h1>🤖 Odoo AI Module Recommender</h1>
+    <h1>🤖 BrowseInfo AI Module Recommender</h1>
 
     <p class="subtitle">
         Enter the client's requirement and let AI recommend the best Odoo or BrowseInfo modules.
@@ -29,67 +29,100 @@
             required>{{ requirement if requirement else '' }}</textarea>
 
         <button type="submit">
-
             Search Modules
-
         </button>
 
     </form>
 
     {% if results %}
 
-    <h2>Recommended Modules</h2>
+    <h2 class="result-title">Recommended Modules</h2>
 
-    <div class="cards">
+    <div class="results-container">
 
-        {% for module in results %}
+        <!-- BrowseInfo Column -->
+        <div class="column">
 
-        <div class="card">
+            <h2 class="column-title browseinfo-title">
+                BrowseInfo Modules
+            </h2>
 
-            <div class="top">
+            {% for module in results %}
+                {% if module.source == "BrowseInfo" %}
 
-                <h3>{{ module.title }}</h3>
+                <div class="card">
 
-                <span class="score">
+                    <div class="top">
+                        <h3>{{ module.title }}</h3>
+                        <span class="score">{{ module.score }}%</span>
+                    </div>
 
-                    {{ module.score }}%
+                    <div class="badge">
+                        {{ module.source }}
+                    </div>
 
-                </span>
+                    <p>
+                        <strong>Category</strong><br>
+                        {{ module.category }}
+                    </p>
 
-            </div>
+                    <p>
+                        <strong>Summary</strong><br>
+                        {{ module.summary }}
+                    </p>
 
-            <div class="badge">
+                    <a href="{{ module.url }}" target="_blank">
+                        View Module →
+                    </a>
 
-                {{ module.source }}
+                </div>
 
-            </div>
-
-            <p>
-
-                <strong>Category</strong><br>
-
-                {{ module.category }}
-
-            </p>
-
-            <p>
-
-                <strong>Summary</strong><br>
-
-                {{ module.summary }}
-
-            </p>
-
-            
-            <a href="{{ module.url }}" target="_blank">
-
-                View Module →
-
-            </a>
+                {% endif %}
+            {% endfor %}
 
         </div>
 
-        {% endfor %}
+        <!-- Odoo Column -->
+        <div class="column">
+
+            <h2 class="column-title odoo-title">
+                Odoo Base Apps
+            </h2>
+
+            {% for module in results %}
+                {% if module.source == "Odoo" %}
+
+                <div class="card">
+
+                    <div class="top">
+                        <h3>{{ module.title }}</h3>
+                        <span class="score">{{ module.score }}%</span>
+                    </div>
+
+                    <div class="badge">
+                        {{ module.source }}
+                    </div>
+
+                    <p>
+                        <strong>Category</strong><br>
+                        {{ module.category }}
+                    </p>
+
+                    <p>
+                        <strong>Summary</strong><br>
+                        {{ module.summary }}
+                    </p>
+
+                    <a href="{{ module.url }}" target="_blank">
+                        View Module →
+                    </a>
+
+                </div>
+
+                {% endif %}
+            {% endfor %}
+
+        </div>
 
     </div>
 
@@ -100,5 +133,4 @@
 <script src="{{ url_for('static', filename='js/script.js') }}"></script>
 
 </body>
-
 </html>
