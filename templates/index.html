@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+    <meta charset="UTF-8">
+
+    <title>Odoo AI Module Recommender</title>
+
+   <link rel="stylesheet"
+      href="{{ url_for('static', filename='css/style.css') }}">
+
+</head>
+
+<body>
+
+<div class="container">
+
+    <h1>🤖 Odoo AI Module Recommender</h1>
+
+    <p class="subtitle">
+        Enter the client's requirement and let AI recommend the best Odoo or BrowseInfo modules.
+    </p>
+
+    <form action="/search" method="POST">
+
+        <textarea
+            name="requirement"
+            placeholder="Example: Client needs purchase approval workflow with inventory automation..."
+            required>{{ requirement if requirement else '' }}</textarea>
+
+        <button type="submit">
+
+            Search Modules
+
+        </button>
+
+    </form>
+
+    {% if results %}
+
+    <h2>Recommended Modules</h2>
+
+    <div class="cards">
+
+        {% for module in results %}
+
+        <div class="card">
+
+            <div class="top">
+
+                <h3>{{ module.title }}</h3>
+
+                <span class="score">
+
+                    {{ module.score }}%
+
+                </span>
+
+            </div>
+
+            <div class="badge">
+
+                {{ module.source }}
+
+            </div>
+
+            <p>
+
+                <strong>Category</strong><br>
+
+                {{ module.category }}
+
+            </p>
+
+            <p>
+
+                <strong>Summary</strong><br>
+
+                {{ module.summary }}
+
+            </p>
+
+            
+            <a href="{{ module.url }}" target="_blank">
+
+                View Module →
+
+            </a>
+
+        </div>
+
+        {% endfor %}
+
+    </div>
+
+    {% endif %}
+
+</div>
+
+<script src="{{ url_for('static', filename='js/script.js') }}"></script>
+
+</body>
+
+</html>

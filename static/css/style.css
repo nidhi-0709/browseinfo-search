@@ -1,0 +1,172 @@
+/* Google Font */
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap');
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:'Poppins',sans-serif;
+}
+
+body{
+    background:#f4f7fb;
+    color:#333;
+}
+
+.container{
+    width:90%;
+    max-width:1200px;
+    margin:40px auto;
+}
+
+h1{
+    text-align:center;
+    color:#1e3a8a;
+    font-size:42px;
+    margin-bottom:10px;
+}
+
+.subtitle{
+    text-align:center;
+    color:#666;
+    margin-bottom:35px;
+    font-size:18px;
+}
+
+form{
+    background:white;
+    padding:30px;
+    border-radius:15px;
+    box-shadow:0 8px 20px rgba(0,0,0,.08);
+}
+
+textarea{
+    width:100%;
+    height:180px;
+    resize:none;
+    border:1px solid #d9d9d9;
+    border-radius:10px;
+    padding:18px;
+    font-size:16px;
+    outline:none;
+    transition:.3s;
+}
+
+textarea:focus{
+    border-color:#2563eb;
+    box-shadow:0 0 10px rgba(37,99,235,.15);
+}
+
+button{
+    margin-top:20px;
+    width:100%;
+    padding:16px;
+    background:#2563eb;
+    color:white;
+    border:none;
+    border-radius:10px;
+    cursor:pointer;
+    font-size:18px;
+    font-weight:600;
+    transition:.3s;
+}
+
+button:hover{
+    background:#1d4ed8;
+}
+
+h2{
+    margin-top:45px;
+    margin-bottom:25px;
+    color:#1e3a8a;
+}
+
+.cards{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(340px,1fr));
+    gap:25px;
+}
+
+.card{
+    background:white;
+    border-radius:15px;
+    padding:25px;
+    box-shadow:0 8px 20px rgba(0,0,0,.08);
+    transition:.3s;
+}
+
+.card:hover{
+    transform:translateY(-6px);
+}
+
+.top{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    margin-bottom:20px;
+}
+
+.top h3{
+    color:#1e293b;
+    font-size:22px;
+}
+
+.score{
+    background:#16a34a;
+    color:white;
+    padding:8px 14px;
+    border-radius:20px;
+    font-weight:bold;
+}
+
+.badge{
+    display:inline-block;
+    background:#2563eb;
+    color:white;
+    padding:6px 14px;
+    border-radius:20px;
+    font-size:14px;
+    margin-bottom:18px;
+}
+
+.card p{
+    margin-bottom:18px;
+    line-height:1.7;
+    color:#555;
+}
+
+.card strong{
+    color:#111827;
+}
+
+.card a{
+    display:inline-block;
+    margin-top:10px;
+    text-decoration:none;
+    color:#2563eb;
+    font-weight:600;
+}
+
+.card a:hover{
+    text-decoration:underline;
+}
+
+@media(max-width:768px){
+
+    h1{
+        font-size:32px;
+    }
+
+    .subtitle{
+        font-size:16px;
+    }
+
+    .container{
+        width:95%;
+    }
+
+    .cards{
+        grid-template-columns:1fr;
+    }
+
+}

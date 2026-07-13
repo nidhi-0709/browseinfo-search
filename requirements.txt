@@ -1,0 +1,8 @@
+Flask==3.0.3
+sentence-transformers
+faiss-cpu
+numpy
+torch
+transformers
+openpyxl
+python-docx
