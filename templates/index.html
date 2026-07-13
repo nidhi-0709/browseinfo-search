@@ -21,9 +21,10 @@
         Enter the client's requirement and let AI recommend the best Odoo or BrowseInfo modules.
     </p>
 
-    <form action="/search" method="POST">
+    <form id="searchForm" action="/search" method="POST">
 
         <textarea
+            id="requirement"
             name="requirement"
             placeholder="Example: Client needs purchase approval workflow with inventory automation..."
             required>{{ requirement if requirement else '' }}</textarea>
@@ -129,6 +130,20 @@
     {% endif %}
 
 </div>
+
+<script>
+document.addEventListener("DOMContentLoaded", function () {
+    const form = document.getElementById("searchForm");
+    const textarea = document.getElementById("requirement");
+
+    textarea.addEventListener("keydown", function (event) {
+        if (event.key === "Enter" && !event.shiftKey) {
+            event.preventDefault();
+            form.submit();
+        }
+    });
+});
+</script>
 
 <script src="{{ url_for('static', filename='js/script.js') }}"></script>
 
